@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d32oqxndgaj4p"]
+
+[ext_resource type="FontFile" uid="uid://di5qy0te76q10" path="res://IBMPlexMono-Bold.ttf" id="1_fftr6"]
+[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://IBMPlexMono-Regular.ttf" id="2_lo71i"]
+
+[node name="DialogueWindow" type="VBoxContainer"]
+
+[node name="Speaker" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fftr6")
+theme_override_font_sizes/font_size = 20
+text = "Karolina"
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lo71i")
+theme_override_font_sizes/font_size = 18
+text = "Konrad, to naprawdę nie jest takie proste jak Ci się wydaje..."
