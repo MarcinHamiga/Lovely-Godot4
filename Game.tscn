@@ -51,11 +51,12 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_gyyni")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG/MarginContainer/Rows/GameInfo"]
+[node name="Scroll" type="ScrollContainer" parent="BG/MarginContainer/Rows/GameInfo"]
 layout_mode = 2
 
-[node name="HistoryRows" type="VBoxContainer" parent="BG/MarginContainer/Rows/GameInfo/ScrollContainer"]
+[node name="HistoryRows" type="VBoxContainer" parent="BG/MarginContainer/Rows/GameInfo/Scroll"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="InputArea" type="PanelContainer" parent="BG/MarginContainer/Rows"]
 custom_minimum_size = Vector2(0, 40)
