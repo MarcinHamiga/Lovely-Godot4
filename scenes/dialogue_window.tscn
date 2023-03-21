@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://cws8quyu8rjr5"]
 
-[ext_resource type="FontFile" uid="uid://di5qy0te76q10" path="res://fonts/IBMPlexMono-Bold.ttf" id="1_fftr6"]
-[ext_resource type="Script" path="res://Scripts/dialogue_window.gd" id="1_kmoef"]
-[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://fonts/IBMPlexMono-Regular.ttf" id="2_lo71i"]
+[ext_resource type="Script" path="res://Scripts/dialogue_window.gd" id="1_bunc1"]
+[ext_resource type="FontFile" uid="uid://di5qy0te76q10" path="res://fonts/IBMPlexMono-Bold.ttf" id="2_opq6c"]
+[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://fonts/IBMPlexMono-Regular.ttf" id="3_nmih7"]
 
 [node name="DialogueWindow" type="VBoxContainer"]
-script = ExtResource("1_kmoef")
+offset_right = 96.0
+offset_bottom = 331.0
+size_flags_horizontal = 3
+script = ExtResource("1_bunc1")
 
 [node name="Speaker" type="Label" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fftr6")
+theme_override_fonts/font = ExtResource("2_opq6c")
 theme_override_font_sizes/font_size = 20
 text = "Karolina"
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_lo71i")
+theme_override_fonts/font = ExtResource("3_nmih7")
 theme_override_font_sizes/font_size = 18
 text = "Konrad, to naprawdę nie jest takie proste jak Ci się wydaje..."
+autowrap_mode = 3

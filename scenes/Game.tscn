@@ -1,22 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://3enhnh53mq0v"]
-
-[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_58mhy"]
-[ext_resource type="Script" path="res://Scripts/CommandProcessor.gd" id="2_mi21k"]
-[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://fonts/IBMPlexMono-Regular.ttf" id="3_4tfbc"]
-[ext_resource type="Script" path="res://Scripts/Input.gd" id="4_m11q2"]
+[gd_scene load_steps=5 format=3 uid="uid://b3cmn4e7iqbo6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfy72"]
 bg_color = Color(0.114897, 0.114897, 0.114897, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyyni"]
-bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6fta"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsw82"]
-bg_color = Color(0.360784, 0.360784, 0.360784, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dia6d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfj2n"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sw52"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3um0"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -25,12 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_58mhy")
-
-[node name="CommandProcessor" type="Node" parent="."]
-script = ExtResource("2_mi21k")
-
-[node name="LocationManager" type="Node" parent="."]
 
 [node name="BG" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -48,46 +33,44 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Rows" type="VBoxContainer" parent="BG/MarginContainer"]
+[node name="Interface" type="VBoxContainer" parent="BG/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
-[node name="GameInfo" type="PanelContainer" parent="BG/MarginContainer/Rows"]
+[node name="Dialogue_and_info" type="HBoxContainer" parent="BG/MarginContainer/Interface"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gyyni")
+theme_override_constants/separation = 10
 
-[node name="Scroll" type="ScrollContainer" parent="BG/MarginContainer/Rows/GameInfo"]
+[node name="Dialogue_box" type="ScrollContainer" parent="BG/MarginContainer/Interface/Dialogue_and_info"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_t6fta")
+
+[node name="Dialogue_rows" type="VBoxContainer" parent="BG/MarginContainer/Interface/Dialogue_and_info/Dialogue_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Info_box" type="ScrollContainer" parent="BG/MarginContainer/Interface/Dialogue_and_info"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dia6d")
+
+[node name="info_rows" type="VBoxContainer" parent="BG/MarginContainer/Interface/Dialogue_and_info/Info_box"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player_choice_bg" type="PanelContainer" parent="BG/MarginContainer/Interface"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_styles/panel = SubResource("StyleBoxFlat_n3um0")
+
+[node name="Player_choice_box" type="ScrollContainer" parent="BG/MarginContainer/Interface/Player_choice_bg"]
 layout_mode = 2
 
-[node name="HistoryRows" type="VBoxContainer" parent="BG/MarginContainer/Rows/GameInfo/Scroll"]
+[node name="Player_choice_rows" type="VBoxContainer" parent="BG/MarginContainer/Interface/Player_choice_bg/Player_choice_box"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 20
-
-[node name="InputArea" type="PanelContainer" parent="BG/MarginContainer/Rows"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lsw82")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/MarginContainer/Rows/InputArea"]
-layout_mode = 2
-
-[node name="Caret" type="Label" parent="BG/MarginContainer/Rows/InputArea/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4tfbc")
-text = " > "
-
-[node name="Input" type="LineEdit" parent="BG/MarginContainer/Rows/InputArea/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_4tfbc")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xfj2n")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8sw52")
-placeholder_text = "Enter a command"
-script = ExtResource("4_m11q2")
-
-[connection signal="text_submitted" from="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
-[connection signal="text_submitted" from="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" method="_on_text_submitted"]
+size_flags_stretch_ratio = 0.25
