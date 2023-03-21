@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://n3gfvu4nc8sm"]
+[gd_scene load_steps=10 format=3 uid="uid://3enhnh53mq0v"]
 
-[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://IBMPlexMono-Regular.ttf" id="1_01yje"]
-[ext_resource type="Script" path="res://Game.gd" id="1_vs7j2"]
-[ext_resource type="Script" path="res://Input.gd" id="2_jfvxp"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_58mhy"]
+[ext_resource type="Script" path="res://Scripts/CommandProcessor.gd" id="2_mi21k"]
+[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://fonts/IBMPlexMono-Regular.ttf" id="3_4tfbc"]
+[ext_resource type="Script" path="res://Scripts/Input.gd" id="4_m11q2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfy72"]
 bg_color = Color(0.114897, 0.114897, 0.114897, 1)
@@ -24,7 +25,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vs7j2")
+script = ExtResource("1_58mhy")
+
+[node name="CommandProcessor" type="Node" parent="."]
+script = ExtResource("2_mi21k")
+
+[node name="LocationManager" type="Node" parent="."]
 
 [node name="BG" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -56,6 +62,8 @@ layout_mode = 2
 
 [node name="HistoryRows" type="VBoxContainer" parent="BG/MarginContainer/Rows/GameInfo/Scroll"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 
 [node name="InputArea" type="PanelContainer" parent="BG/MarginContainer/Rows"]
@@ -68,19 +76,18 @@ layout_mode = 2
 
 [node name="Caret" type="Label" parent="BG/MarginContainer/Rows/InputArea/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_01yje")
+theme_override_fonts/font = ExtResource("3_4tfbc")
 text = " > "
 
 [node name="Input" type="LineEdit" parent="BG/MarginContainer/Rows/InputArea/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("1_01yje")
+theme_override_fonts/font = ExtResource("3_4tfbc")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfj2n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8sw52")
 placeholder_text = "Enter a command"
-max_length = 60
-script = ExtResource("2_jfvxp")
+script = ExtResource("4_m11q2")
 
 [connection signal="text_submitted" from="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_input_text_submitted"]
 [connection signal="text_submitted" from="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="BG/MarginContainer/Rows/InputArea/HBoxContainer/Input" method="_on_text_submitted"]

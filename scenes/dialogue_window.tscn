@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d32oqxndgaj4p"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="FontFile" uid="uid://di5qy0te76q10" path="res://IBMPlexMono-Bold.ttf" id="1_fftr6"]
-[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://IBMPlexMono-Regular.ttf" id="2_lo71i"]
+[ext_resource type="FontFile" uid="uid://di5qy0te76q10" path="res://fonts/IBMPlexMono-Bold.ttf" id="1_fftr6"]
+[ext_resource type="Script" path="res://Scripts/dialogue_window.gd" id="1_kmoef"]
+[ext_resource type="FontFile" uid="uid://bqxwnqqlj5tfi" path="res://fonts/IBMPlexMono-Regular.ttf" id="2_lo71i"]
 
 [node name="DialogueWindow" type="VBoxContainer"]
+script = ExtResource("1_kmoef")
 
 [node name="Speaker" type="Label" parent="."]
 layout_mode = 2
